@@ -1,8 +1,6 @@
 /**
- * Write a description of class Main here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Main class for the upgrade pathfinder application.
+ * Handles user input to determine possible upgrades and item refinement paths.
  */
 import java.util.*;
 import java.util.HashMap;
@@ -13,18 +11,14 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args) 
-    {   
-        
-        // Create a scanner for user input
+    {
         Scanner scanner = new Scanner(System.in);
-        
-        //yuh, yuh, keep it goin'
+
         while (true) {
-                // Retrieve the item based on the user's input
                 Item selectedItem = null;
                 String userInput = new String("");
-            
-                // Prompt user to input an item by name or ID
+
+                // Get a valid item from the user.
                 while (selectedItem == null) {
                     System.out.println("Enter the item name or ID:");
                     userInput = scanner.nextLine();    
@@ -41,11 +35,10 @@ public class Main
                         System.out.println("Invalid item. Please try again.");
                     }
                 }
-                
-                // Display the selected item
+
                 System.out.println("You selected the item: " + selectedItem.getName() + " (ID: " + selectedItem.getId() + ")");
-                
-                // Retrieve the item based on the user's input
+
+                // Get a valid refinement setting.
                 RefineSetting selectedSetting = null;
                 
                 while (selectedSetting == null) {
@@ -72,11 +65,14 @@ public class Main
                 } else {
                     System.out.println("Input: " + selectedItem.getName() + " (setting: " + selectedSetting + ")\nOutput: Unknown\n");
                 }
+
+                // Display refinement results
                 String prompt = new String("");
                 System.out.println("Continue? (Y/N)");
                 prompt = scanner.nextLine();
                 System.out.println();
-                
+
+                // Prompt for continuation
                 if (!prompt.equalsIgnoreCase("Y")) {
                     break;        
                 }    

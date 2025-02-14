@@ -1,53 +1,60 @@
-import javafx.scene.image.Image;
-
 /**
- * Write a description of class AmmoItem here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Represents an ammo item that extends the generic Item class.
+ * Ammo items contain a count of available rounds and display their name accordingly.
  */
-public class AmmoItem extends Item
-{
-    // instance variables - replace the example below with your own
-    private int ammoCount;
+public class AmmoItem extends Item {
+    private int ammoCount; // Stores the number of rounds in this ammo item.
 
     /**
-     * Constructor for objects of class AmmoItem
+     * Constructs an AmmoItem with a default round count.
+     * @param name Name of the ammo item.
+     * @param id Unique identifier for the ammo item.
+     * @param imagePath Path to the item's image.
      */
-    public AmmoItem(String name, int id, String imagePath)
-    {
-        // initialise instance variables
+    public AmmoItem(String name, int id, String imagePath) {
         super(name, id, imagePath);
-        this.ammoCount = 15;
+        this.ammoCount = 15; // Default ammo count.
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Overrides getName to display as "box of [Ammo Type]".
+     * @return Formatted ammo item name.
      */
     @Override
     public String getName() {
         return "box of " + super.getName();
     }
 
+    /**
+     * Retrieves the number of rounds in this ammo item.
+     * @return The ammo count.
+     */
     public int getRoundsInt() {
         return ammoCount;
     }
-    
-    public String getRounds()
-    {
+
+    /**
+     * Returns the number of rounds as a formatted string.
+     * @return String representation of the ammo count.
+     */
+    public String getRounds() {
         return "(" + ammoCount + " cartridges)";
-    }    
-    
+    }
+
+    /**
+     * Sets a new round count for the ammo item.
+     * @param ammoCount New amount of rounds.
+     */
     public void setRounds(int ammoCount) {
         this.ammoCount = ammoCount;
     }
-    
+
+    /**
+     * Converts the AmmoItem into a string for display.
+     * @return A formatted string with item name and round count.
+     */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return super.getName() + " " + getRounds();
     }
 }

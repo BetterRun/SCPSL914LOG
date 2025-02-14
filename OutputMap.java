@@ -1,12 +1,8 @@
-
 /**
- * Write a description of class OutputLog here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Stores all possible refinement results in a map.
+ * Each key is a combination of an item and a setting, and the value is the corresponding output.
  */
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +16,10 @@ public class OutputMap
         
         //KeyCards
         //Janitor Keycard
+        // Example: Defining some keycard refinement outcomes.
         Output Janitor1 = new Output(Item.KEYCARD_JANITOR, RefineSetting.ROUGH, List.of(OutputItem.DESTROYED));
-            outputMap.put(Janitor1.getFormula(),Janitor1);
+        outputMap.put(Janitor1.getFormula(),Janitor1);
+        //When the Janitor Keycard is refined on the setting Rough, it is destroyed in the output.
         
         Output Janitor2 = new Output(Item.KEYCARD_JANITOR, RefineSetting.COARSE, List.of(OutputItem.DESTROYED));
         outputMap.put(Janitor2.getFormula(),Janitor2);
@@ -1025,11 +1023,6 @@ public class OutputMap
         
         //SCP Items
         // SCP-330's Candies can not be upgraded via SCP-914 and will stay on the input side if dropped.
-        
-        // SCP-330 
-        
-        //Output Janitor1 = new Output(Item.KEYCARD_JANITOR, RefineSetting.ROUGH, List.of(OutputItem.DESTROYED));
-            //outputMap.put(Janitor1.getFormula(),Janitor1);
             
         Output SCP330_1 = new Output(Item.SCP_330, RefineSetting.ROUGH, List.of( 
             OutputItem.CANNOT_BE_REFINED));
@@ -1574,9 +1567,13 @@ public class OutputMap
         //thats 275 combinations of 55 items and 5 settings. Wow!
 
     }
-        
+
+    /**
+     * Retrieves the output items for a given refinement formula.
+     * @param formula The formula representing an input item and setting.
+     * @return The corresponding output items.
+     */
     public static Output getOutputItems(String formula) {
         return outputMap.get(formula);
     }
-
 }   

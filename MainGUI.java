@@ -1,10 +1,14 @@
+/**
+ * A JavaFX-based GUI for refining items in the game.
+ * Allows users to select an item, choose a setting, and see potential refinement outcomes.
+ */
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.List;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MainGUI extends Application {
@@ -22,8 +26,8 @@ public class MainGUI extends Application {
                 //itemListView.setPrefHeight(200); // Set preferred height for the scrollable area
                 itemListView.getItems().addAll(Item.getAllItems());
                 itemListView.setStyle("-fx-background-color: #1C1C1C; -fx-control-inner-background: #CCCCCC; -fx-text-fill: #D6B295;");
-                
-                // Custom cell factory to display images and text
+
+                // Custom list cell factory for displaying items with images
                 itemListView.setCellFactory(param -> new ListCell<>() {    
                     private final ImageView imageView = new ImageView();
                     
@@ -127,10 +131,10 @@ public class MainGUI extends Application {
                     } else {
                         outputLabel.setText("Please select an item and setting.");
                     }
-                });        
-                
-        
-                // Add components to layout
+                });
+
+
+                // Add UI elements to layout
                 layout.getChildren().addAll(itemLabel, itemListView, settingLabel, settingDropdown, refineButton, newInputLabel, outputLabel);
         
                 // Set up the scene

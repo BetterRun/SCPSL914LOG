@@ -1,58 +1,53 @@
 
 /**
- * Write a description of class OutputItem here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Represents an item that can be produced as an output from a refinement.
+ * Contains a probability and, in the case of ammo, a round count.
  */
 
 public class OutputItem extends Item
 {
     // instance variables - replace the example below with your own
-    private double chance;
-    private int rounds;
+    private double chance; // Probability of receiving this item as an output.
+    private int rounds; // Number of rounds (if applicable).
 
     /**
-     * Constructor for objects of class OutputItem
+     * Constructs an OutputItem with an image.
+     * @param name Name of the output item.
+     * @param id Unique identifier.
+     * @param imagePath Path to the item's image.
+     * @param chance Probability of receiving this item.
      */
     public OutputItem(String name, int id, String imagePath, double chance)
     {
-        // initialise instance variables
         super(name, id, imagePath);
         this.chance = chance;
     }
     
     OutputItem(String name, int id, double chance)
     {
-        // initialise instance variables
         super(name, id);
         this.chance = chance;
     }
     
     OutputItem(Item item, double chance)
     {
-        // initialise instance variables
         super(item.getName(), item.getId());
         this.chance = chance;
     }
     
     OutputItem(Item ammoItem, double chance, int rounds)
     {
-        // initialise instance variables
         super(ammoItem.getName(), ammoItem.getId());
         this.chance = chance;
         this.rounds = rounds;
     }
-    
+
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Converts the OutputItem to a formatted string including probability.
+     * @return A string representation of the output item.
      */
     public double getChance()
     {
-        // put your code here
         return chance;
     }
     
@@ -71,7 +66,8 @@ public class OutputItem extends Item
         double percentage = chance * 100;
         return super.getName() + " (" + String.format("%.2f", percentage) + "%)";
     }
-    
+
+    //Items/item states that can only exist as an output
     public static OutputItem DESTROYED = new OutputItem("Destroyed", 55, 1.0);
     public static OutputItem RANDOMATTACHMENTS = new OutputItem("Randomized Attachments", 56, 1.0);
     public static OutputItem REFUELED_MICRO_HID = new OutputItem("Micro HID (Refueled)", 16, 1.0);

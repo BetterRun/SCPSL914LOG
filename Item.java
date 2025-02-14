@@ -1,8 +1,6 @@
 /**
- * Write a description of class item here.
- *
- * @max (your name)
- * @0.0.1 (a version number or a date)
+ * Represents a general item in the game, including keycards, weapons, and ammo.
+ * Each item has a name, ID, and optionally an image.
  */
 import java.util.Map;
 import java.util.HashMap;
@@ -10,18 +8,18 @@ import javafx.scene.image.Image;
 
 public class Item
 {
-    // instance variables - replace the example below with your own
     private String name;
     private int id;
-    private Image image;
+    private Image image; // Image representation of the item.
 
     /**
-     * Constructor for objects of class item
+     * Constructs an item with an image.
+     * @param name Name of the item.
+     * @param id Unique identifier for the item.
+     * @param imagePath Path to the image file.
      */
-    
     public Item(String name, int id, String imagePath)
     {
-        // initialise instance variables
         this.name=name;
         this.id=id;
         try {
@@ -32,39 +30,32 @@ public class Item
             }
         } catch (Exception e) {
             System.err.println("Failed to load image for item: " + name + ". " + e.getMessage());
-            this.image = null; // Set to null or a placeholder image
+            this.image = null; // Image set to null if not found.
         }
     }
-    
+
+    /**
+     * Constructs an item without an image.
+     * @param name Name of the item.
+     * @param id Unique identifier for the item.
+     */
     public Item(String name, int id)
     {
-        // initialise instance variables
         this.name=name;
         this.id=id;
         this.image = null;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  Setting
-     * @return    Output 
-     */
-    public String getName()
-    {
-        // put your code here
-        return name;
-    }
+    public String getName() { return name; }
     public int getId()
     {
         return id;
     }
-    
-    public Image getImage() {
-        // Return a JavaFX Image object
-        return image;
-    }
-    
+    public Image getImage() { return image; }
+
+    /**
+     * Returns a formatted name for ammo items.
+     */
     @Override
     public String toString() {
         if (this instanceof AmmoItem) {
